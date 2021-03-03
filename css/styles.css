@@ -1,34 +1,62 @@
 body {
     font-family: sans-serif;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(0, 0, 0);
+    
 }
 
-header {
-    max-width: 58rem;
-    margin: 0 auto;
+p, h1, h2 {
+    color: azure;
 }
 
-/* Step 1: Style all the menu links showing on the smallest screen */
+.bg {
+    position: relative;
+    width: 100%;
+}
 
-/* Text styling goes on the <a> tag to overwrite the browser styles.
-Layout styles go on the <li> elements */
+.logo {
+    filter: brightness(0) invert(1);
+    max-width: 20%;
+    height: auto;
+    object-fit: cover;
+}
+
+.heading h1, h2 {
+    padding-top: 100px;
+    font-size: 40px;
+}
+
+.heading {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 ul.menu {
-    background-color: #191919;
+    background-color: #000000;
+    max-width: 58rem;
+    margin: 0 auto;
 }
 
 ul.menu a {
     color: #f5f5f5;
     text-decoration: none;
     text-transform: uppercase;
-    /* expand the clickable area to fill the entire li, vs just the text itself */
     display: block;
     padding: 1rem;
 }
 
 ul.menu a:hover,
 ul.menu a:active {
-    background-color: #262626;
+    text-decoration: underline;
     border-radius: 5px;
+    transition-property: left right;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
 }
 
 ul.dropdown-menu {
@@ -39,60 +67,43 @@ ul.dropdown-menu a {
     text-decoration: none;
 }
 
-/* Step 2: layout the links for the larger screen */
-/* Step 3: style everything and hide the second level nav */
-
 @media only screen and (min-width: 40em) {
     ul.menu {
         display: flex;
     }
 
     ul.menu li {
-     /* flex-grow: 1;
-        flex-shrink: 0;
-        flex-basis: auto; */
         flex: 1 0 auto;
-        /* forces the text to stay on one line */
         white-space: nowrap;
         text-align: center;
         position: relative;
     }
 
-    /* remove the indent we wanted for the mobiel screen */
-    /* Step 4: position and the hide the drop down menu */
-
     ul.dropdown-menu {
         padding: 0;
         position: absolute;
-        background-color: #191919;
         border-radius: 0 0 5px 5px;
         left: 0;
-        /* display none is bad for screen readers */
-        /* display: none; */
         visibility: hidden;
         opacity: 0;
         transition: all 0.5s ease;
     }
 
-    /* Step 4: Create a hover state that will show this menu */
-    /* when hovering over the main li, the drop down will show */
-
     ul.menu li:hover > ul {
-        /*display: block; display none on drop down */
         visibility: visible;
         opacity: 1;
     }
 
-    /* Step 5: add accessiblity with the :focus-within state on the li's whioch will 
-    target the anchor tags inside */
-    /* https:webaim.org/techniques/keyboard/ */
     ul.menu li:focus-within > ul,
     ul.menu li > ul:focus {
         visibility: visible;
         opacity: 1;
         display: block;
     }
+}
 
-    /* Step 6: add transition to the changing dropdown menu to show/hide it smoothly */
-    /*  */
+section img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
